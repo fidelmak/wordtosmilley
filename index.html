@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="word to Smilleys " />
+<meta property="og:description" content="Type the words and see the imojis " />
+<meta property="og:image" content="" />
+    <title>Word to Emoji </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1> Word to Smilleys 🌝 </h1>
+    <input type="text" id="wordInput" placeholder="Type a word">
+    <button onclick="convertToEmojis()">Convert</button>
+    <div id="result"></div>
+
+    <script>
+        const emojiMap = {
+            a: '🍎', b: '🍌', c: '🌵', d: '🐶', e: '🐘',
+            f: '🐸', g: '🍇', h: '🏠', i: '🍦', j: '🎃',
+            k: '🔑', l: '🍋', m: '🌝', n: '👃', o: '🐙',
+            p: '🍍', q: '❓', r: '🌈', s: '🌞', t: '🌴',
+            u: '☂️', v: '🌋', w: '🌊', x: '❌', y: '🍋',
+            z: '⚡'
+        };
+
+        function convertToEmojis() {
+            const word = document.getElementById('wordInput').value.toLowerCase();
+            let emojiResult = '';
+            for (let char of word) {
+                emojiResult += emojiMap[char] || char;
+            }
+            document.getElementById('result').innerText = emojiResult;
+        }
+    </script>
+</body>
+</html>
