@@ -9,12 +9,9 @@
     1:1" />
     <meta property="fc:frame:button:1" 
     content="type=Mint;title=Mint;target=eip155:8453:0xf5a3b6dee033ae5025e4332695931cadeb7f4d2b:1" />
-
     <meta property="fc:frame:post_url" content="https://wordtosmilley.vercel.app/" />
-
     <meta property="fc:frame:button:1" 
     content="type=post;title=Check eligibility" />
-
     
    
     <meta property="og:description" content="Type the words and see the emojis" />
@@ -47,14 +44,28 @@
     <button onclick="convertToEmojis()">TransForm</button>
     <div id="result"></div>
 
+    <h2>Emoji to Words 📝</h2><br />
+    <input type="text" id="emojiInput" placeholder="Paste your emojis">
+    <button onclick="convertToWords()">Decipher</button>
+    <div id="decipherResult"></div>
+
     <script>
         const emojiMap = {
             a: '🍎', b: '🍌', c: '🌵', d: '🐶', e: '🐘',
             f: '🐸', g: '🍇', h: '🏠', i: '🍦', j: '🎃',
             k: '🔑', l: '🍋', m: '🌝', n: '👃', o: '🐙',
             p: '🍍', q: '❓', r: '🌈', s: '🌞', t: '🌴',
-            u: '☂️', v: '🌋', w: '🌊', x: '❌', y: '🍋',
+            u: '☂️', v: '🌋', w: '🌊', x: '❌', y: '🌟',
             z: '⚡'
+        };
+
+        // Create reverse mapping for deciphering
+        const reverseEmojiMap = {
+            '🍎': 'a', '🍌': 'b', '🌵': 'c', '🐶': 'd', '🐘': 'e',
+            '🐸': 'f', '🍇': 'g', '🏠': 'h', '🍦': 'i', '🎃': 'j',
+            '🔑': 'k', '🍋': 'l', '🌝': 'm', '👃': 'n', '🐙': 'o',
+            '🍍': 'p', '❓': 'q', '🌈': 'r', '🌞': 's', '🌴': 't',
+            '☂️': 'u', '🌋': 'v', '🌊': 'w', '❌': 'x', '🌟': 'y', '⚡': 'z'
         };
 
         function convertToEmojis() {
@@ -64,6 +75,19 @@
                 emojiResult += emojiMap[char] || char;
             }
             document.getElementById('result').innerText = emojiResult;
+        }
+
+        function convertToWords() {
+            const emojis = document.getElementById('emojiInput').value;
+            let wordResult = '';
+            
+            // Split the input into individual characters/emojis
+            const emojiArray = Array.from(emojis);
+            
+            for (let emoji of emojiArray) {
+                wordResult += reverseEmojiMap[emoji] || emoji;
+            }
+            document.getElementById('decipherResult').innerText = wordResult;
         }
     </script>
 </body>
